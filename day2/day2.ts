@@ -26,3 +26,16 @@ function part2(): number {
         }
     }
 }
+
+function part2_b(): number {
+    const TARGET = 19690720;
+    let noun = 0;
+    let verb = 99;
+    while (noun < 100 && verb >= 0) {
+        const result = part1(numbers, noun, verb);
+        if (result === TARGET) return 100 * noun + verb;
+        if (result < TARGET) noun++;
+        else verb--;
+    }
+    throw new Error("Keine Lösung gefunden");
+}
