@@ -6,14 +6,16 @@ function part1(input: number[], noun: number, verb: number): number {
     const numbers = input.slice();
     numbers[1] = noun;
     numbers[2] = verb;
-    for (let i = 0; i < numbers.length; i += 4) {
+    for (let i = 0; i < numbers.length; i++) {
         const opcode = numbers[i];
         if (opcode === 99) break;
         if (opcode === 1) {
             numbers[numbers[i+3]] = numbers[numbers[i+1]] + numbers[numbers[i+2]];
+            i += 3
         }
         if (opcode === 2) {
             numbers[numbers[i+3]] = numbers[numbers[i+1]] * numbers[numbers[i+2]];
+            i += 3
         }
     }
     return numbers[0];
